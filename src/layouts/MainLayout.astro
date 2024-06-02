@@ -1,47 +1,46 @@
 ---
 import { ViewTransitions, slide } from 'astro:transitions';
-import Navbar from '../components/Navbar.astro';
+import Navbar from '../components/Navbar/Navbar.astro';
 interface Props {
-	title: string;
+    title: string;
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props as Props;
 ---
 
 <!doctype html>
 <html lang="en" transition:animate="none">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
         <ViewTransitions />
-	</head>
-	<body class="bg-zinc-900 text-white">
+    </head>
+    <body class="bg-zinc-900 text-white">
         <main>
             <Navbar />
-            <div transition:animate={slide({ duration: '0.6s' })}>
+            <div transition:animate={slide({ duration: '0.8s' })}>
                 <slot />
             </div>
         </main>
-	</body>
+        <style>
+            html {
+                font-family: system-ui, sans-serif;
+            }
+            code {
+                font-family:
+                    Menlo,
+                    Monaco,
+                    Lucida Console,
+                    Liberation Mono,
+                    DejaVu Sans Mono,
+                    Bitstream Vera Sans Mono,
+                    Courier New,
+                    monospace;
+            }
+        </style>
+    </body>
 </html>
-
-<style>
-	html {
-		font-family: system-ui, sans-serif;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
